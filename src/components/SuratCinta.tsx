@@ -51,7 +51,7 @@ const SuratCinta = () => {
               className="relative"
             >
               {/* Envelope body */}
-              <div className="w-64 h-40 bg-gradient-to-br from-pink-200 to-pink-300 rounded-lg shadow-2xl relative overflow-hidden border-4 border-pink-400">
+              <div className="w-48 h-32 sm:w-64 sm:h-40 bg-gradient-to-br from-pink-200 to-pink-300 rounded-lg shadow-2xl relative overflow-hidden border-4 border-pink-400">
                 {/* Decorative pattern */}
                 <div className="absolute inset-0 opacity-20">
                   {[...Array(20)].map((_, i) => (
@@ -77,7 +77,7 @@ const SuratCinta = () => {
 
                 {/* Mail icon */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <Mail className="w-16 h-16 text-white drop-shadow-lg" />
+                  <Mail className="w-12 h-12 sm:w-16 sm:h-16 text-white drop-shadow-lg" />
                 </div>
               </div>
 
@@ -106,7 +106,7 @@ const SuratCinta = () => {
                 duration: 1.5,
                 repeat: Infinity,
               }}
-              className="text-pink-600 font-poppins font-medium mt-6 text-center"
+              className="text-pink-600 font-poppins font-medium mt-6 text-center text-sm sm:text-base"
             >
               Klik untuk membuka surat cintanya! 💌
             </motion.p>
@@ -125,7 +125,7 @@ const SuratCinta = () => {
               initial={{ rotateX: 0 }}
               animate={{ rotateX: 180 }}
               transition={{ duration: 0.6 }}
-              className="w-64 h-8 bg-gradient-to-br from-pink-300 to-pink-400 rounded-t-lg mx-auto mb-4 border-4 border-t-0 border-pink-400"
+              className="w-48 h-6 sm:w-64 sm:h-8 bg-gradient-to-br from-pink-300 to-pink-400 rounded-t-lg mx-auto mb-4 border-4 border-t-0 border-pink-400"
               style={{
                 transformStyle: 'preserve-3d',
                 transformOrigin: 'top',
@@ -137,21 +137,21 @@ const SuratCinta = () => {
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="bg-gradient-to-br from-pink-50 to-white rounded-2xl shadow-2xl p-8 md:p-12 border-4 border-pink-200 relative overflow-hidden"
+              className="bg-gradient-to-br from-pink-50 to-white rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 border-4 border-pink-200 relative overflow-hidden"
             >
               {/* Decorative corners */}
-              <div className="absolute top-4 left-4 text-3xl">🌸</div>
-              <div className="absolute top-4 right-4 text-3xl">🌸</div>
-              <div className="absolute bottom-4 left-4 text-3xl">💕</div>
-              <div className="absolute bottom-4 right-4 text-3xl">💕</div>
+              <div className="absolute top-2 left-2 sm:top-4 sm:left-4 text-xl sm:text-3xl">🌸</div>
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 text-xl sm:text-3xl">🌸</div>
+              <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 text-xl sm:text-3xl">💕</div>
+              <div className="absolute bottom-2 right-2 sm:bottom-4 sm:right-4 text-xl sm:text-3xl">💕</div>
 
               {/* Letter header */}
-              <div className="text-center mb-8 relative z-10">
+              <div className="text-center mb-6 sm:mb-8 relative z-10">
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="text-pink-500 font-quicksand text-sm mb-2"
+                  className="text-pink-500 font-quicksand text-xs sm:text-sm mb-2"
                 >
                   Dari: {message.from}
                 </motion.p>
@@ -159,7 +159,7 @@ const SuratCinta = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className="text-pink-600 font-poppins font-bold text-lg mb-4"
+                  className="text-pink-600 font-poppins font-bold text-base sm:text-lg mb-4"
                 >
                   Untuk: {message.to}
                 </motion.p>
@@ -167,7 +167,7 @@ const SuratCinta = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.7 }}
-                  className="text-2xl md:text-3xl font-bold text-pink-700 font-quicksand"
+                  className="text-xl sm:text-2xl md:text-3xl font-bold text-pink-700 font-quicksand"
                 >
                   {message.title}
                 </motion.h2>
@@ -180,13 +180,13 @@ const SuratCinta = () => {
                 transition={{ delay: 0.9 }}
                 className="relative z-10"
               >
-                <div className="text-pink-800 font-poppins text-base md:text-lg leading-relaxed whitespace-pre-wrap">
+                <div className="text-pink-800 font-poppins text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-wrap">
                   {displayedText}
                   {!isComplete && (
                     <motion.span
                       animate={{ opacity: [1, 0] }}
                       transition={{ duration: 0.5, repeat: Infinity }}
-                      className="inline-block w-1 h-6 bg-pink-600 ml-1"
+                      className="inline-block w-1 h-5 sm:h-6 bg-pink-600 ml-1"
                     />
                   )}
                 </div>

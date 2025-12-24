@@ -12,10 +12,21 @@ const BirthdayPage = () => {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Preload audio
-    const birthdayMusic = new Audio('/assets/birthday-music.mp3');
+    // Preload audio from Cloudinary
+    const birthdayMusic = new Audio('https://res.cloudinary.com/dwfz1iaay/video/upload/v1766618366/happy-birthday-368842_nnzm8n.mp3');
     birthdayMusic.loop = true;
+    birthdayMusic.preload = 'auto'; // Preload untuk smooth playback
     setAudio(birthdayMusic);
+
+    // Auto-play music saat halaman muncul
+    birthdayMusic.play()
+      .then(() => {
+        setIsMusicPlaying(true);
+      })
+      .catch(err => {
+        // Browser mungkin block autoplay, user perlu interact dulu
+        console.log('Autoplay blocked, user needs to interact first:', err);
+      });
 
     return () => {
       if (birthdayMusic) {
