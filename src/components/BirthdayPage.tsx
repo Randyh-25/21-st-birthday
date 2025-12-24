@@ -119,28 +119,29 @@ const BirthdayPage = () => {
 
       {/* Floating decorative elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-4xl opacity-20"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: window.innerHeight + 100,
-            }}
-            animate={{
-              y: -100,
-              x: Math.random() * window.innerWidth,
-              rotate: 360,
-            }}
-            transition={{
-              duration: Math.random() * 10 + 15,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-          >
-            {['🎈', '🎉', '🎊', '💕', '🌸', '✨'][Math.floor(Math.random() * 6)]}
-          </motion.div>
-        ))}
+        {[...Array(12)].map((_, i) => {
+          const emojis = ['🎈', '🎉', '🎊', '💕', '🌸', '✨'];
+          const startX = (i * window.innerWidth) / 12;
+          return (
+            <motion.div
+              key={i}
+              className="absolute text-4xl opacity-20"
+              style={{ left: startX, top: window.innerHeight + 100 }}
+              animate={{
+                y: [-100, -window.innerHeight - 100],
+                rotate: 360,
+              }}
+              transition={{
+                duration: 18 + i,
+                repeat: Infinity,
+                delay: i * 0.5,
+                ease: "linear",
+              }}
+            >
+              {emojis[i % emojis.length]}
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Main content */}

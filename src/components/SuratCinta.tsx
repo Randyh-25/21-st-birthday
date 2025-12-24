@@ -195,28 +195,29 @@ const SuratCinta = () => {
               {/* Floating hearts */}
               {isComplete && (
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                  {[...Array(10)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute text-2xl"
-                      initial={{
-                        x: Math.random() * window.innerWidth,
-                        y: window.innerHeight,
-                        opacity: 0,
-                      }}
-                      animate={{
-                        y: -100,
-                        opacity: [0, 1, 0],
-                      }}
-                      transition={{
-                        duration: 3 + Math.random() * 2,
-                        repeat: Infinity,
-                        delay: Math.random() * 2,
-                      }}
-                    >
-                      {['💕', '💖', '💗', '💝', '🌸'][Math.floor(Math.random() * 5)]}
-                    </motion.div>
-                  ))}
+                  {[...Array(6)].map((_, i) => {
+                    const emojis = ['💕', '💖', '💗', '💝', '🌸'];
+                    const startX = (i * window.innerWidth) / 6;
+                    return (
+                      <motion.div
+                        key={i}
+                        className="absolute text-2xl"
+                        style={{ left: startX, top: window.innerHeight }}
+                        animate={{
+                          y: [-50, -window.innerHeight - 100],
+                          opacity: [0, 1, 0],
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          delay: i * 0.7,
+                          ease: "easeOut",
+                        }}
+                      >
+                        {emojis[i % emojis.length]}
+                      </motion.div>
+                    );
+                  })}
                 </div>
               )}
             </motion.div>

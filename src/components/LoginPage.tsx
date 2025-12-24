@@ -75,27 +75,29 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
       >
         {/* Floating hearts decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute text-pink-300"
-              initial={{ 
-                x: Math.random() * window.innerWidth, 
-                y: window.innerHeight + 50 
-              }}
-              animate={{
-                y: -100,
-                x: Math.random() * window.innerWidth,
-              }}
-              transition={{
-                duration: Math.random() * 10 + 10,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-              }}
-            >
-              <Heart className="w-6 h-6 fill-current opacity-30" />
-            </motion.div>
-          ))}
+          {[...Array(8)].map((_, i) => {
+            const startX = (i * window.innerWidth) / 8;
+            const endX = startX + (window.innerWidth / 8);
+            return (
+              <motion.div
+                key={i}
+                className="absolute text-pink-300"
+                style={{ left: startX, top: window.innerHeight + 50 }}
+                animate={{
+                  y: [-50, -window.innerHeight - 100],
+                  x: [0, endX - startX],
+                }}
+                transition={{
+                  duration: 15 + i * 2,
+                  repeat: Infinity,
+                  delay: i * 0.8,
+                  ease: "linear",
+                }}
+              >
+                <Heart className="w-6 h-6 fill-current opacity-30" />
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Login Card */}

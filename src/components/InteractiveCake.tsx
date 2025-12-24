@@ -279,23 +279,23 @@ const InteractiveCake = ({ candlesLit, onBlowCandles }: InteractiveCakeProps) =>
         {/* Sparkles around cake */}
         {candlesLit && (
           <div className="absolute inset-0 pointer-events-none">
-            {[...Array(8)].map((_, i) => (
+            {[...Array(6)].map((_, i) => (
               <motion.div
                 key={i}
-                className="absolute text-2xl"
+                className="absolute text-xl"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
+                  left: `${20 + (i * 15)}%`,
+                  top: `${10 + (i % 3) * 30}%`,
                 }}
                 animate={{
                   scale: [0, 1, 0],
-                  opacity: [0, 1, 0],
-                  rotate: [0, 180],
+                  opacity: [0, 0.8, 0],
                 }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
-                  delay: Math.random() * 2,
+                  delay: i * 0.3,
+                  ease: "easeInOut",
                 }}
               >
                 ✨
