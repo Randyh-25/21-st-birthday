@@ -13,7 +13,6 @@ interface Message {
 
 const SuratCinta = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [allMessages, setAllMessages] = useState<string>('');
   
   const message: Message = messageData;
